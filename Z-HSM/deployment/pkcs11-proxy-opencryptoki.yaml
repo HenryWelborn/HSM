@@ -63,9 +63,14 @@ spec:
           mountPath: /var/lib/opencryptoki
         - name: opencryptoki-config
           mountPath: /etc/opencryptoki
+        - name: z90crypt
+          mountPath: /dev/z90crypt
       volumes:
       - name: token-object-storage
         persistentVolumeClaim:
           claimName: opencryptoki-token-pvc
       - name: opencryptoki-config
         emptyDir: {}
+      - name: z90crypt
+        hostPath:
+          path: /dev/z90crypt  
